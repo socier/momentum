@@ -1,14 +1,12 @@
 const clock = document.getElementById("clock");
 
-
-
-function getClock() {
-  const date = new Date();
-  const hours = String(date.getHours()).padStart(2,"0");
-  const minutes = String(date.getMinutes()).padStart(2,"0");
-  const seconds = String(date.getSeconds()).padStart(2,"0");
-  clock.innerText = `${hours}:${minutes}:${seconds}`;
+const displayClock = () => {
+  const now = new Date();
+  const hh = String(now.getHours()).padStart(2,"0");
+  const mm = String(now.getMinutes()).padStart(2,"0");
+  const ss = String(now.getSeconds()).padStart(2,"0");
+  clock.innerText = `${hh}:${mm}:${ss}`;
 }
 
-getClock();
-setInterval(getClock, 1000);
+displayClock();
+setInterval(displayClock, 1000);

@@ -1,60 +1,55 @@
-const toDoForm = document.getElementById("todo-form");
-const toDoList = document.getElementById("todo-list");
-const toDoInput = toDoForm.querySelector("input");
-let toDos = [];
-const TODOS_KEY = "todos";
+const todoForm = document.getElementById("todo-form");
+const todoUL = document.getElementById("todo-ul");
+const todoInput = todoForm.querySelector("input");
 
-function saveToDos() {
-  localStorage.setItem("todos",JSON.stringify(toDos));
+let todos = [];
+
+function saveTodos() {
+  localStorage.setItem("TODOS", JSON.stringify(todos));
 }
 
-function deleteToDo(event) {
+function removeTodo(event) {
   const li = event.target.parentElement;
-  toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id)); //toDos 업데이트
+  todos = todos.filter(
+    todo => todo.id !== parseInt(li.id)
+  );
   li.remove();
-  saveToDos();
+  saveTodos();
 }
 
-function paintToDo(newTodo){
+function addTodo(newTodo) {
   const li = document.createElement("li");
-  li.id = newTodo.id;
   const span = document.createElement("span");
-  span.innerText = newTodo.text;
-  const button = document.createElement("button");
-  button.innerText = "❌"
-  button.addEventListener("click", deleteToDo);
+  const remove = document.createElement("button");
+ 
+  span.innerText = newTodo.text + "  ";
+  remove.innerText = "x"
+  remove.addEventListener("click", removeTodo);
+ 
+  li.id = newTodo.id;
   li.appendChild(span);
-  li.appendChild(button);
-  toDoList.appendChild(li);
+  li.appendChild(remove);
 
+  todoUL.appendChild(li);
 }
 
-
-function handleToDoSubmit(e) {
-  e.preventDefault(); //submit의 기본동작 새로고침 방지
-  const newTodo = toDoInput.value;
-  toDoInput.value = "";
-  const newToDoObj ={
-    text: newTodo,
-    id: Date.now()
+todoForm.addEventListener("submit", event => {
+  event.preventDefault();
+  const text = todoInput.value;
+  const todo = {
+    id: Date.now(),
+    text: text
   };
-  toDos.push(newToDoObj);
-  paintToDo(newToDoObj);
-  saveToDos();
+  todos.push(todo);
+  addTodo(todo);
+  saveTodos();
+  todoInput.value = "";
+}); 
+
+
+const saved = localStorage.getItem("TODOS");
+
+if (saved) {
+  const todos = JSON.parse(saved);
+  todos.forEach(addTodo);
 }
-
-toDoForm.addEventListener("submit", handleToDoSubmit); 
-//submit을 하면 handleToDoSubmit이라는 함수를 실행
-
-// function sayHello(item){
-//   console.log("this is the turn of", item);
-// }
-
-const savedToDos = localStorage.getItem(TODOS_KEY);
-
-if(savedToDos !== null) {
-  const parsedToDos = JSON.parse(savedToDos);
-  toDos = parsedToDos; //toDos array값 업데이트
-  parsedToDos.forEach(paintToDo);
-}
-
