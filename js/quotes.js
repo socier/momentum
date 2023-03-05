@@ -16,7 +16,6 @@ const quotes = [
   ["Hell is other people.", "Jean-Paul Sartre"],
   ["Here's looking at you, kid.", "Rick Blaine (character)"],
   ["Houston, we have a problem.", "Jim Lovell (character)"],
-  ["I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character.", "Martin Luther King"],
   ["I have always depended on the kindness of strangers.", "Blanche Dubois (character)"],
   ["I love the smell of napalm in the morning.", "Lt. Kilgore (character)"],
   ["I think therefore I am.", "Rene Descartes"],
@@ -49,12 +48,10 @@ const quotes = [
   ["To be or not to be, that is the question.", "William Shakespeare"],
   ["To err is human; to forgive, divine.", "Alexander Pope"],
   ["To thine own self, be true.", "William Shakespeare"],
-  ["Two roads diverged in a wood, and I, I took the one less travelled by, and that has made all the difference.", "Robert Frost"],
   ["United we stand, divided we fall.", "Aesop"],
   ["What doesn't kill us makes us stronger.", "Friedrich Nietzsche"],
   ["What we've got here is failure to communicate. Some men you just can't reach.", "Captain (character)"],
   ["Whatever you are, be a good one.", "Abraham Lincoln"],
-  ["You can fool all of the people some of the time, and some of the people all of the time, but you can't fool all of the people all of the time.", "Abraham Lincoln"],
   ["You must be the change you wish to see in the world.", "Mahatma Ghandi"],
   ["You talkin' to me?", "Bickle (character)"]
 ];
