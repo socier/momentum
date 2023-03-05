@@ -20,7 +20,7 @@ function removeTodo(event) {
 function addTodo(newTodo) {
   const li = document.createElement("li");
   const span = document.createElement("span");
-  const remove = document.createElement("button");
+  const remove = document.createElement("a");
  
   span.innerText = newTodo.text + "  ";
   remove.innerText = "x"
